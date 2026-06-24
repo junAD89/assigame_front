@@ -1,17 +1,44 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
+import { Link, useNavigate } from 'react-router-dom'
+
+import { toast } from "react-toastify";
+
+import axios from "axios";
 export default function Register() {
+  // Pour naviguer vers une autre page
+  const router = useNavigate()
+
   const [nom, setNom] = useState('')
   const [prenom, setPrenom] = useState('')
   const [email, setEmail] = useState('')
   const [login, setLogin] = useState('')
   const [motdepasse, setMotdepasse] = useState('')
   const [telephone, setTelephone] = useState('')
-
-  const handleRegister = (e) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const handleRegister = async (e) => {
     e.preventDefault()
-    // Action d'inscription à lier avec l'API plus tard
+    setIsLoading(true)
+    try {
+      const userData = { nom, prenom, email, login, motdepasse, telephone };
+      const response = await axios.post("/api/auth/register", userData);
+      // pas besoin d'ecrire localhost:8081 car deja configurer un proxy dans vite.config.js
+      toast.success("Inscription reussie")
+      router('/')
+      console.log(response);
+    } catch (error) {
+      toast.error("Erreur lors de l'inscription" + error.message)
+      console.log(error);
+    }
+    finally {
+      setNom('')
+      setPrenom('')
+      setEmail('')
+      setLogin('')
+      setMotdepasse('')
+      setTelephone('')
+      setIsLoading(false)
+    }
   }
 
   return (

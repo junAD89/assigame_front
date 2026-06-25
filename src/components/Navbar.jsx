@@ -39,11 +39,35 @@ export default function Navbar() {
 
       {/* Right side */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-        {/* Cart icon */}
+
+        {/* Icône "+" → Ajouter un produit (ouvre le Dashboard) */}
+        {user &&
+          (
+            <Link
+              to="/dashboard"
+              title="Ajouter / gérer les produits"
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                width: '36px', height: '36px', borderRadius: '50%',
+                background: '#F5A623', color: '#fff', textDecoration: 'none',
+                boxShadow: '0 2px 8px rgba(245,166,35,0.35)',
+                transition: 'transform 0.15s, box-shadow 0.15s'
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 4px 14px rgba(245,166,35,0.5)' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 2px 8px rgba(245,166,35,0.35)' }}
+            >
+              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </Link>
+          )}
+
+
+        {/* Icône panier */}
         <Link to="/panier" style={{ position: 'relative', textDecoration: 'none', color: '#1a1a1a' }}>
           <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
           </svg>
           {cartCount > 0 && (
             <span style={{
@@ -57,6 +81,7 @@ export default function Navbar() {
           )}
         </Link>
 
+        {/* Auth : connecté ou non */}
         {user ? (
           <>
             <Link to="/commandes" style={linkStyle}>Mes commandes</Link>

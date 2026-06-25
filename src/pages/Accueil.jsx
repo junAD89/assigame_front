@@ -93,45 +93,6 @@ export default function Accueil() {
         ))}
       </div>
 
-      {/* CATÉGORIES */}
-      <section style={{ background: '#fff', padding: '3rem 5%', marginTop: '1rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.3rem', fontWeight: '800' }}>Nos catégories populaires</h2>
-          <a href="/catalogue" style={{ color: '#F5A623', fontSize: '0.85rem', textDecoration: 'none', fontWeight: '600' }}>Voir tout →</a>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '1rem' }}>
-          {categories.map((cat, i) => (
-            <div key={i} style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid #e5e7eb', cursor: 'pointer', textAlign: 'center' }}>
-              <img src={cat.img} alt={cat.nom} style={{ width: '100%', height: '90px', objectFit: 'cover' }} />
-              <div style={{ padding: '0.6rem', fontSize: '0.8rem', fontWeight: '700', color: '#374151' }}>{cat.nom}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PRODUITS POPULAIRES */}
-      <section style={{ padding: '3rem 5%', background: '#f9fafb' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.3rem', fontWeight: '800' }}>Produits populaires</h2>
-          <a href="/catalogue" style={{ color: '#F5A623', fontSize: '0.85rem', textDecoration: 'none', fontWeight: '600' }}>Voir tous les produits →</a>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
-          {produits.map((p, i) => (
-            <div key={i} style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e5e7eb', position: 'relative' }}>
-              <span style={{ position: 'absolute', top: '0.8rem', left: '0.8rem', background: '#F5A623', color: '#fff', fontSize: '0.7rem', fontWeight: '700', padding: '0.2rem 0.5rem', borderRadius: '4px', zIndex: 1 }}>{p.promo}</span>
-              <img src={p.img} alt={p.nom} style={{ width: '100%', height: '160px', objectFit: 'cover' }} />
-              <div style={{ padding: '0.8rem' }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: '700', marginBottom: '0.3rem' }}>{p.nom}</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.3rem' }}>
-                  <span style={{ color: '#F5A623', fontWeight: '800' }}>{p.prix}</span>
-                  <span style={{ color: '#9ca3af', fontSize: '0.75rem', textDecoration: 'line-through' }}>{p.ancien}</span>
-                </div>
-                <div style={{ color: '#f59e0b', fontSize: '0.8rem' }}>{'★'.repeat(p.avis)}{'☆'.repeat(5 - p.avis)}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* BANNIÈRES PROMO */}
       <section style={{ padding: '2rem 5%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
